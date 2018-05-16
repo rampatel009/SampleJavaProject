@@ -34,6 +34,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public List<User> findByPassportNumber(String name) {
         List<User> stdList = null;
+		// Find student by passport number
         try (Stream<User> studentStream = userRepository.findByPassportNumberReturnStream(name)) {
             stdList = studentStream.collect(Collectors.toList());
         } catch(Exception ex){
